@@ -9,7 +9,7 @@ const members = [
   {
     name: "Joan Arau",
     initial: "J",
-    tags: "Business · Tech · Mid-level Python",
+    tags: "CEO · Product Owner · AI Builder",
   },
 ];
 
