@@ -1,27 +1,49 @@
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/sections/Hero";
-import { Problem } from "@/sections/Problem";
-import { Story } from "@/sections/Story";
-import { Proof } from "@/sections/Proof";
-import { Services } from "@/sections/Services";
-import { Audience } from "@/sections/Audience";
-import { Team } from "@/sections/Team";
-import { Contact } from "@/sections/Contact";
+import { useEffect, useState } from "react";
+import { PageLayout } from "@/components/PageLayout";
+import { Home } from "@/pages/Home";
+import { CaseStudy } from "@/pages/CaseStudy";
+import { StoryPage } from "@/pages/Story";
+import { FAQ } from "@/pages/FAQ";
+import { Impressum } from "@/pages/Impressum";
+import { Datenschutz } from "@/pages/Datenschutz";
+
+function getPage() {
+  return window.location.hash || "#/";
+}
 
 export function App() {
-  return (
-    <>
-      <Nav />
-      <Hero />
-      <Problem />
-      <Story />
-      <Proof />
-      <Services />
-      <Audience />
-      <Team />
-      <Contact />
-      <Footer />
-    </>
-  );
+  const [page, setPage] = useState(getPage);
+
+  useEffect(() => {
+    const onHash = () => {
+      setPage(getPage());
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
+  let content;
+  switch (page) {
+    case "#/story":
+      content = <StoryPage />;
+      break;
+    case "#/case-study":
+      content = <CaseStudy />;
+      break;
+    case "#/faq":
+      content = <FAQ />;
+      break;
+    case "#/impressum":
+      content = <Impressum />;
+      break;
+    case "#/datenschutz":
+      content = <Datenschutz />;
+      break;
+    default:
+      content = <Home />;
+      break;
+  }
+
+  return <PageLayout>{content}</PageLayout>;
 }
