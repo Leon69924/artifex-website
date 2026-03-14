@@ -20,27 +20,22 @@ const projectStats = [
 ];
 
 const infrastructure = [
-  { name: "K3s Cluster", detail: "9 Nodes, 2 Datacenter (Nürnberg + Helsinki)" },
-  { name: "ArgoCD", detail: "Git Push → automatisches Deployment" },
-  { name: "TeamCity", detail: "CI/CD, Tests, Quality Gates, Image Builds" },
-  { name: "CNPG PostgreSQL", detail: "Streaming Replication, Cross-DC Failover" },
-  { name: "Prometheus + Grafana", detail: "Monitoring + Alerting" },
-  { name: "Loki", detail: "Log-Aggregation" },
-  { name: "Velero", detail: "Cluster Backups" },
-  { name: "Cloudflare Tunnels", detail: "Zero-Trust Access" },
-  { name: "Tailscale", detail: "VPN für alle Nodes" },
-  { name: "Hetzner S3", detail: "Object Storage" },
-  { name: "Dev Pods", detail: "Remote-Entwicklung mit 2.5ms Latenz" },
+  { name: "Kubernetes Cluster", detail: "9 Nodes, 2 Rechenzentren, automatisches Failover" },
+  { name: "GitOps Deployment", detail: "Git Push → automatisch getestet, gebaut und deployed" },
+  { name: "Datenbank", detail: "PostgreSQL mit Replikation und Cross-DC Failover" },
+  { name: "Monitoring & Alerting", detail: "Dashboards, Logs und automatische Benachrichtigungen" },
+  { name: "Backup & Recovery", detail: "Automatisierte Backups auf mehreren Ebenen" },
+  { name: "Zero-Trust Zugang", detail: "Sichere Verbindungen ohne offene Ports" },
 ];
 
 const aiStack = [
-  { name: "Claude Code + CLAUDE.md", detail: "AI kennt gesamte Projekt-Architektur" },
-  { name: "KB-Context Hook", detail: "40+ Patterns — automatische Knowledge-Base-Injektion" },
-  { name: "Quality Gate Hooks", detail: "Pre-Commit Linting, Security, Tests" },
-  { name: "Hookify Rules", detail: "Verhindert unsichere/fehlerhafte AI-Aktionen" },
-  { name: "Multi-Agent Workflows", detail: "Mehrere AIs arbeiten parallel an Features" },
-  { name: "MCP-Server", detail: "Enterprise-Tools (Sophos, Veeam, TeamCity) direkt in AI" },
-  { name: "Custom Skills (18+)", detail: "Wiederverwendbare Workflows für häufige Aufgaben" },
+  { name: "Architektur-Kontext", detail: "Die AI kennt jederzeit die gesamte Projekt-Struktur und Konventionen" },
+  { name: "Automatische Wissens-Injektion", detail: "40+ Patterns liefern der AI relevanten Kontext zu jeder Aufgabe" },
+  { name: "Qualitätssicherung", detail: "Jeder Commit wird automatisch auf Code-Qualität, Sicherheit und Tests geprüft" },
+  { name: "Schutz vor Fehlern", detail: "Regeln verhindern unsichere oder fehlerhafte AI-Aktionen automatisch" },
+  { name: "Parallele AI-Arbeit", detail: "Mehrere AI-Instanzen arbeiten gleichzeitig an verschiedenen Features" },
+  { name: "Enterprise-Integration", detail: "Firewall, Backup und CI/CD direkt aus der AI heraus steuerbar" },
+  { name: "Wiederverwendbare Workflows", detail: "18+ vorgefertigte Abläufe für häufige Entwicklungsaufgaben" },
 ];
 
 const timeline = [
@@ -164,7 +159,7 @@ export function CaseStudy() {
           <div className="grid gap-4 sm:grid-cols-2">
             {infrastructure.map((item, i) => (
               <FadeIn key={item.name} delay={i * 0.04}>
-                <div className="rounded-lg border border-slate-700 bg-slate-800 px-5 py-4">
+                <div className="h-full rounded-lg border border-slate-700 bg-slate-800 px-5 py-4">
                   <p className="font-mono text-sm font-semibold text-indigo-400">
                     {item.name}
                   </p>
