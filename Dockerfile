@@ -8,7 +8,7 @@ RUN pnpm vite build
 
 FROM nginx:1.27-alpine
 # Allow non-root to write pid and cache
-RUN sed -i 's|/var/run/nginx.pid|/tmp/nginx.pid|' /etc/nginx/nginx.conf && \
+RUN sed -i 's|/run/nginx.pid|/tmp/nginx.pid|' /etc/nginx/nginx.conf && \
     chown -R 101:101 /var/cache/nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
